@@ -2107,7 +2107,7 @@ func (t *LiteServerDebugVerbosity) UnmarshalTL(r io.Reader) error {
 
 type TonNodeBlockId struct {
 	Workchain int32
-	Shard     uint64 `json:",string"`
+	Shard     int64 `json:",string"`
 	Seqno     uint32
 }
 
@@ -2163,7 +2163,7 @@ func (t *TonNodeBlockId) UnmarshalTL(r io.Reader) error {
 
 type TonNodeBlockIdExt struct {
 	Workchain int32
-	Shard     uint64 `json:",string"`
+	Shard     int64 `json:",string"`
 	Seqno     uint32
 	RootHash  tl.Int256
 	FileHash  tl.Int256
@@ -2798,7 +2798,7 @@ func (c *Client) LiteServerRunSmcMethod(ctx context.Context, request LiteServerR
 type LiteServerGetShardInfoRequest struct {
 	Id        TonNodeBlockIdExt
 	Workchain int32
-	Shard     uint64 `json:",string"`
+	Shard     int64 `json:",string"`
 	Exact     bool
 }
 
