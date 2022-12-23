@@ -116,7 +116,7 @@ func (t *AdnlMessage) UnmarshalTL(r io.Reader) error {
 }
 
 type LiteServerAccountId struct {
-	Workchain uint32
+	Workchain int32
 	Id        tl.Int256
 }
 
@@ -2244,7 +2244,7 @@ func (t *TonNodeBlockIdExt) UnmarshalTL(r io.Reader) error {
 }
 
 type TonNodeZeroStateIdExt struct {
-	Workchain uint32
+	Workchain int32
 	RootHash  tl.Int256
 	FileHash  tl.Int256
 }
@@ -2797,7 +2797,7 @@ func (c *Client) LiteServerRunSmcMethod(ctx context.Context, request LiteServerR
 
 type LiteServerGetShardInfoRequest struct {
 	Id        TonNodeBlockIdExt
-	Workchain uint32
+	Workchain int32
 	Shard     uint64 `json:",string"`
 	Exact     bool
 }
