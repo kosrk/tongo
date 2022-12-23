@@ -2106,7 +2106,7 @@ func (t *LiteServerDebugVerbosity) UnmarshalTL(r io.Reader) error {
 }
 
 type TonNodeBlockId struct {
-	Workchain uint32
+	Workchain int32
 	Shard     uint64 `json:",string"`
 	Seqno     uint32
 }
@@ -2162,7 +2162,7 @@ func (t *TonNodeBlockId) UnmarshalTL(r io.Reader) error {
 }
 
 type TonNodeBlockIdExt struct {
-	Workchain uint32
+	Workchain int32
 	Shard     uint64 `json:",string"`
 	Seqno     uint32
 	RootHash  tl.Int256
