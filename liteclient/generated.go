@@ -1666,7 +1666,14 @@ func (t LiteServerSignatureSet) MarshalTL() ([]byte, error) {
 }
 
 func (t *LiteServerSignatureSet) UnmarshalTL(r io.Reader) error {
-	var err error
+	var (
+		tag uint32
+		err error
+	)
+	err = tl.Unmarshal(r, &tag)
+	if err != nil {
+		return err
+	}
 	err = tl.Unmarshal(r, &t.ValidatorSetHash)
 	if err != nil {
 		return err
