@@ -1638,6 +1638,14 @@ func (t LiteServerSignatureSet) MarshalTL() ([]byte, error) {
 		b   []byte
 	)
 	buf := new(bytes.Buffer)
+	b, err = tl.Marshal(0xf644a6e6)
+	if err != nil {
+		return nil, err
+	}
+	_, err = buf.Write(b)
+	if err != nil {
+		return nil, err
+	}
 	b, err = tl.Marshal(t.ValidatorSetHash)
 	if err != nil {
 		return nil, err
@@ -1673,6 +1681,9 @@ func (t *LiteServerSignatureSet) UnmarshalTL(r io.Reader) error {
 	err = tl.Unmarshal(r, &tag)
 	if err != nil {
 		return err
+	}
+	if tag != 0xf644a6e6 {
+		return fmt.Errorf("invalid tag")
 	}
 	err = tl.Unmarshal(r, &t.ValidatorSetHash)
 	if err != nil {
